@@ -14,7 +14,7 @@ export default function Home() {
               </h1>
               <div className="wptb-item--description">
                 kimono photography Agency runs wide and deep. Across many <br />{" "}
-                markets, geographies &amp; typologies, our team members
+                markets, geographies &amp; typologies, our team memberss
               </div>
             </div>
           </div>
