@@ -1,132 +1,114 @@
-/*
-Theme Name: 
-Version: 
-Author: 
-Author URI: 
-Description: 
-*/
-/*	IE 10 Fix*/
-
 (function ($) {
-	'use strict';
-	
-	jQuery(document).ready(function () {
+  "use strict";
 
+  jQuery(document).ready(function () {
+    var $grid = $(".grid");
 
-        // Isotope Portfolio
-        var iso = $grid.data('isotope');
-        var $filterCount = $('.filter-count');
+    if ($grid.length === 0) {
+      return;
+    }
 
-        // bind filter button click
-        $('.filters-button-group .button').on( 'click', function() {
-            var filterValue = $( this ).attr('data-filter');
-            // use filterFn if matches value
-            $grid.isotope({ filter: filterValue });
-            updateFilterCount();
-        });
+    // Isotope Portfolio
+    var iso = $grid.data("isotope");
+    var $filterCount = $(".filter-count");
 
-        function updateFilterCount() {
-            $filterCount.text( iso.filteredItems.length);
-        }
+    if (iso) {
+      function updateFilterCount() {
+        $filterCount.text(iso.filteredItems.length);
+      }
+      updateFilterCount();
+
+      $(".filters-button-group .button").on("click", function () {
+        var filterValue = $(this).attr("data-filter");
+        $grid.isotope({ filter: filterValue });
         updateFilterCount();
+      });
 
-        // change is-checked class on buttons
-        $('.filters-button-group').each( function( i, buttonGroup ) {
-            var $buttonGroup = $( buttonGroup );
-            $buttonGroup.on( 'click', 'button', function() {
-                $buttonGroup.find('.is-checked').removeClass('is-checked');
-                $( this ).addClass('is-checked');
-            });
-		});
+      $(".filters-button-group").each(function (i, buttonGroup) {
+        var $buttonGroup = $(buttonGroup);
+        $buttonGroup.on("click", "button", function () {
+          $buttonGroup.find(".is-checked").removeClass("is-checked");
+          $(this).addClass("is-checked");
+        });
+      });
 
-		
+      $grid.imagesLoaded().progress(function () {
+        $grid.isotope("layout");
+      });
 
-		$grid.imagesLoaded().progress( function() {
-			$grid.isotope('layout');
-		});
-		
-		//****************************
-		// Isotope Load more button
-		//****************************
-		var initShow = 10; 
-		var counter = initShow;
-		loadMore(initShow);
-		function loadMore(toShow) {
-			$grid.find(".hidden").removeClass("hidden");
+      var initShow = 10;
+      var counter = initShow;
+      loadMore(initShow);
+      function loadMore(toShow) {
+        $grid.find(".hidden").removeClass("hidden");
 
-			var hiddenElems = iso.filteredItems.slice(toShow, iso.filteredItems.length).map(function(item) {
-				return item.element;
-			});
-			$(hiddenElems).addClass('hidden');
-			$grid.isotope('layout');
+        var hiddenElems = iso.filteredItems
+          .slice(toShow, iso.filteredItems.length)
+          .map(function (item) {
+            return item.element;
+          });
+        $(hiddenElems).addClass("hidden");
+        $grid.isotope("layout");
 
-			if (hiddenElems.length == 0) {
-				jQuery("#load-more").hide();
-			} else {
-				jQuery("#load-more").show();
-			};
+        if (hiddenElems.length == 0) {
+          jQuery("#load-more").hide();
+        } else {
+          jQuery("#load-more").show();
+        }
+      }
 
-		}
+      $("#load-more").click(function () {
+        if ($(".filters-button-group").data("clicked")) {
+          counter = initShow;
+          $(".filters-button-group").data("clicked", false);
+        } else {
+          counter = counter;
+        }
+        counter = counter + initShow;
+        loadMore(counter);
+      });
 
-		//append load more button
-		// $grid.after('<button id="load-more" class="btn btn-dark">Load More</button>');
-		//when load more button clicked
-		$("#load-more").click(function() {
-			if ($('.filters-button-group').data('clicked')) {
-				counter = initShow;
-				$('.filters-button-group').data('clicked', false);
-			} else {
-				counter = counter;
-			};
-			counter = counter + initShow;
-			loadMore(counter);
-		});
+      $(".filters-button-group").click(function () {
+        $(this).data("clicked", true);
+        loadMore(initShow);
+      });
 
-		//when filter button clicked
-		$(".filters-button-group").click(function() {
-			$(this).data('clicked', true);
+      $(function () {
+        $(".effect-fly .grid-item").each(function () {
+          $(this).hoverdir();
+        });
+      });
 
-			loadMore(initShow);
-		});
-    
+      $(".effect-tilt .grid-item").tilt({
+        maxTilt: 15,
+        perspective: 1400,
+        easing: "cubic-bezier(.03,.98,.52,.99)",
+        speed: 1200,
+        scale: 1.01,
+        reset: true,
+      });
 
-		$(function() {
-			$('.effect-fly .grid-item ').each( function() { $(this).hoverdir(); } );
-		});
+      $(".wptb-slider.style16 .wptb-slider--inner").tilt({
+        maxTilt: 15,
+        perspective: 1400,
+        easing: "cubic-bezier(.03, .98, .52, .99)",
+        speed: 300,
+        glare: false,
+        maxGlare: 0.5,
+        scale: 1.01,
+        reset: true,
+      });
+    }
+  });
 
-		$(".effect-tilt .grid-item").tilt({
-			maxTilt: 15,
-			perspective: 1400,
-			easing: "cubic-bezier(.03,.98,.52,.99)",
-			speed: 1200,
-			// glare: true,
-			// maxGlare: 0.1,
-			scale: 1.01,
-			reset: true
-		});
-
-		// Tilt effect for Slider
-		$(".wptb-slider.style16 .wptb-slider--inner").tilt({
-			maxTilt: 15,
-			perspective: 1400,
-			easing: "cubic-bezier(.03, .98, .52, .99)",
-			speed: 300,
-			glare: false,
-			maxGlare: 0.5,
-			scale: 1.01,
-			reset: true
-		});
-
- 	});	
+  var $grid = $(".grid").isotope({
+    itemSelector: ".grid-item",
+    percentPosition: true,
+    layoutMode: "masonry",
+    transformsEnabled: true,
+    transitionDuration: "700ms",
+    resize: true,
+    fitWidth: true,
+    columnWidth: ".grid-sizer",
+  });
 })(jQuery);
-
-var $grid = $('.grid').isotope({
-	itemSelector: '.grid-item', 
-	percentPosition: true,
-	layoutMode: 'masonry',
-	transformsEnabled: true,
-	transitionDuration: "700ms",
-	resize: true,
-	fitWidth: true,
-	columnWidth: '.grid-sizer',
-});
