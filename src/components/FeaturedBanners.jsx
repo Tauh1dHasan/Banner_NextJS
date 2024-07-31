@@ -49,7 +49,7 @@ export default function FeaturedBanners() {
                 <div className="wptb-item--holder">
                   <div className="wptb-item--meta">
                     <h4>
-                      <a href="project-details.html">Bright Boho Sunshine</a>
+                      <a href="singelBannerName">Bright Boho Sunshine</a>
                     </h4>
                     <p>By Jonathon Willson</p>
                   </div>
@@ -70,7 +70,7 @@ export default function FeaturedBanners() {
                 <div className="wptb-item--holder">
                   <div className="wptb-item--meta">
                     <h4>
-                      <a href="project-details.html">
+                      <a href="singelBannerName">
                         California Fall Collection 2023
                       </a>
                     </h4>
@@ -93,7 +93,7 @@ export default function FeaturedBanners() {
                 <div className="wptb-item--holder">
                   <div className="wptb-item--meta">
                     <h4>
-                      <a href="project-details.html">Brown girl next door</a>
+                      <a href="singelBannerName">Brown girl next door</a>
                     </h4>
                     <p>By Jonathon Willson</p>
                   </div>
@@ -114,7 +114,7 @@ export default function FeaturedBanners() {
                 <div className="wptb-item--holder">
                   <div className="wptb-item--meta">
                     <h4>
-                      <a href="project-details.html">Fashion next stage</a>
+                      <a href="singelBannerName">Fashion next stage</a>
                     </h4>
                     <p>By Jonathon Willson</p>
                   </div>
@@ -135,7 +135,7 @@ export default function FeaturedBanners() {
                 <div className="wptb-item--holder">
                   <div className="wptb-item--meta">
                     <h4>
-                      <a href="project-details.html">Jenifer in green</a>
+                      <a href="singelBannerName">Jenifer in green</a>
                     </h4>
                     <p>By Jonathon Willson</p>
                   </div>
@@ -156,7 +156,7 @@ export default function FeaturedBanners() {
                 <div className="wptb-item--holder">
                   <div className="wptb-item--meta">
                     <h4>
-                      <a href="project-details.html">Sunflower Boho girl</a>
+                      <a href="singelBannerName">Sunflower Boho girl</a>
                     </h4>
                     <p>By Jonathon Willson</p>
                   </div>
@@ -177,7 +177,7 @@ export default function FeaturedBanners() {
                 <div className="wptb-item--holder">
                   <div className="wptb-item--meta">
                     <h4>
-                      <a href="project-details.html">Iceland girl</a>
+                      <a href="singelBannerName">Iceland girl</a>
                     </h4>
                     <p>By Jonathon Willson</p>
                   </div>
@@ -198,7 +198,7 @@ export default function FeaturedBanners() {
                 <div className="wptb-item--holder">
                   <div className="wptb-item--meta">
                     <h4>
-                      <a href="project-details.html">Summer sadness</a>
+                      <a href="singelBannerName">Summer sadness</a>
                     </h4>
                     <p>By Jonathon Willson</p>
                   </div>
@@ -219,7 +219,7 @@ export default function FeaturedBanners() {
                 <div className="wptb-item--holder">
                   <div className="wptb-item--meta">
                     <h4>
-                      <a href="project-details.html">Festive mode one</a>
+                      <a href="singelBannerName">Festive mode one</a>
                     </h4>
                     <p>By Jonathon Willson</p>
                   </div>
@@ -240,7 +240,7 @@ export default function FeaturedBanners() {
                 <div className="wptb-item--holder">
                   <div className="wptb-item--meta">
                     <h4>
-                      <a href="project-details.html">Bright Boho Sunshine0</a>
+                      <a href="singelBannerName">Bright Boho Sunshine0</a>
                     </h4>
                     <p>By Jonathon Willson</p>
                   </div>

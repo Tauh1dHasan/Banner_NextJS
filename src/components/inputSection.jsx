@@ -1,99 +1,81 @@
-import Image from "next/image";
-
-export default function inputSection() {
+export default function InputSection() {
   return (
     <>
-      <section className="wptb-contact-form style2">
-        <div className="wptb-item-layer both-version">
-          <Image
-            src="/assets/img/more/texture-2.png"
-            alt="texture-2"
-            width={700}
-            height={400}
-          />
-          <Image
-            src="/assets/img/more/texture-2-light.png"
-            alt="texture-2-light"
-            width={700}
-            height={400}
-          />
-        </div>
-        <div className="container">
-          <div className="wptb-form--wrapper no-bg">
-            <div className="row">
-              <div className="col-lg-5">
-                <div className="wptb-heading-two pe-lg-5">
-                  <div className="wptb-item--inner">
-                    <h1 className="wptb-item--title">
-                      Feel Free To Ask Us Anything <span>Contact Us</span>
-                    </h1>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-7">
-                <form className="wptb-form" action="#" method="post">
-                  <div className="wptb-form--inner">
-                    <div className="row">
-                      <div className="col-lg-6 col-md-6 mb-4">
-                        <div className="form-group">
+      <section class="wptb-contact-form-two pt-5">
+        <div class="container">
+          <h2 className="text-center mb-4">
+            Provide Inputs and Generate Banner
+          </h2>
+          <div class="wptb-form--wrapper">
+            <div class="row">
+              <div class="col-lg-12">
+                <form class="wptb-form" action="#" method="post">
+                  <div class="wptb-form--inner">
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="form-group">
                           <input
                             type="text"
                             name="name"
-                            className="form-control"
+                            class="form-control"
                             placeholder="Name*"
                             required
                           />
                         </div>
                       </div>
-                      <div className="col-lg-6 col-md-6 mb-4">
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            name="orgname"
-                            className="form-control"
-                            placeholder="Org Name*"
-                            required
-                          />
-                        </div>
-                      </div>
-                      <div className="col-lg-6 col-md-6 mb-4">
-                        <div className="form-group">
+
+                      <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="form-group">
                           <input
                             type="text"
                             name="designation"
-                            className="form-control"
-                            placeholder="Designation*"
+                            class="form-control"
+                            placeholder="Designation"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="col-lg-12 col-md-12 mb-4">
+                        <div class="form-group">
+                          <input
+                            type="text"
+                            name="organization"
+                            class="form-control"
+                            placeholder="Organization*"
                             required
                           />
                         </div>
                       </div>
 
-                      <div className="col-lg-6 col-md-6 mb-4">
-                        <div className="form-group">
+                      <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="form-group">
                           <input
                             type="file"
-                            name="picture"
-                            className="form-control"
+                            name="photo"
+                            class="form-control"
+                            placeholder="Your photo*"
                             required
                           />
                         </div>
                       </div>
-                      <div className="col-lg-6 col-md-6 mb-4">
-                        <div className="form-group">
+
+                      <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="form-group">
                           <input
                             type="file"
                             name="logo"
-                            className="form-control"
+                            class="form-control"
+                            placeholder="Organization logo*"
                             required
                           />
                         </div>
                       </div>
 
-                      <div className="col-lg-6 col-md-6 mb-4">
-                        <div className="wptb-item--button">
-                          <button className="btn" type="submit">
-                            <span className="btn-wrap">
-                              <span className="text-first">Submit</span>
+                      <div class="col-md-12 col-lg-12">
+                        <div class="wptb-item--button">
+                          <button class="btn" type="submit">
+                            <span class="btn-wrap">
+                              <span class="text-first">Generate Banner</span>
                             </span>
                           </button>
                         </div>
