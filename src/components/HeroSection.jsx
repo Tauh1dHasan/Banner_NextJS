@@ -1,6 +1,17 @@
+"use client";
+
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
 export default function HeroSection() {
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/events")
+      .then((response) => response.json())
+      .then((data) => setEvents(data));
+  }, []);
+
   return (
     <section className="wptb-slider style15">
       <div className="wptb-heading-two">
@@ -19,71 +30,21 @@ export default function HeroSection() {
       </div>
       <div className="swiper-container wptb-swiper-slider-fifteen">
         <div className="swiper-wrapper">
-          <div className="swiper-slide">
-            <div className="wptb-slider--item">
-              <div className="wptb-slider--image">
-                <Image
-                  src="/assets/img/slider/37.jpg"
-                  alt="Hero Slider Image"
-                  width={700}
-                  height={400}
-                  layout="responsive"
-                />
+          {events.map((event) => (
+            <div className="swiper-slide">
+              <div className="wptb-slider--item">
+                <div className="wptb-slider--image">
+                  <Image
+                    src={`/documents/${event.img}`}
+                    alt={event.title}
+                    width={700}
+                    height={400}
+                    layout="responsive"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          <div className="swiper-slide">
-            <div className="wptb-slider--item">
-              <div className="wptb-slider--image">
-                <Image
-                  src="/assets/img/slider/38.jpg"
-                  alt="Hero Slider Image"
-                  width={700}
-                  height={400}
-                  layout="responsive"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="swiper-slide">
-            <div className="wptb-slider--item">
-              <div className="wptb-slider--image">
-                <Image
-                  src="/assets/img/slider/39.jpg"
-                  alt="Hero Slider Image"
-                  width={700}
-                  height={400}
-                  layout="responsive"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="swiper-slide">
-            <div className="wptb-slider--item">
-              <div className="wptb-slider--image">
-                <Image
-                  src="/assets/img/slider/40.jpg"
-                  alt="Hero Slider Image"
-                  width={700}
-                  height={400}
-                  layout="responsive"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="swiper-slide">
-            <div className="wptb-slider--item">
-              <div className="wptb-slider--image">
-                <Image
-                  src="/assets/img/slider/41.jpg"
-                  alt="Hero Slider Image"
-                  width={700}
-                  height={400}
-                  layout="responsive"
-                />
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
       <div className="wptb-item-layer wptb-item-layer-one both-version">

@@ -24,7 +24,9 @@ export default function page() {
 
                     <ul>
                       {users.map((user) => (
-                        <li key={user.id}>{user.name_bn}</li>
+                        <li key={user.id}>
+                          {user.name_bn} - {user.email}
+                        </li>
                       ))}
                     </ul>
                   </div>
