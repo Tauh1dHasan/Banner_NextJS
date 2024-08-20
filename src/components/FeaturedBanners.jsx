@@ -1,6 +1,17 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function FeaturedBanners() {
+  const [feEvents, setfeEvents] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/featuredEvents")
+      .then((response) => response.json())
+      .then((data) => setfeEvents(data));
+  }, []);
+
   return (
     <section className="wptb-project pt-0">
       <div className="wptb-item-layer both-version">
@@ -32,221 +43,40 @@ export default function FeaturedBanners() {
             </div>
           </div>
         </div>
-        <div className="style-masonry effect-blur">
-          <div className="grid grid-3 gutter-10 clearfix">
-            <div className="grid-sizer"></div>
-            <div className="grid-item">
-              <div className="wptb-item--inner">
-                <div className="wptb-item--image">
-                  <Image
-                    src="/assets/img/projects/1/1.jpg"
-                    alt="Banner 1"
-                    width={700}
-                    height={400}
-                    layout="responsive"
-                  />
-                </div>
-                <div className="wptb-item--holder">
-                  <div className="wptb-item--meta">
-                    <h4>
-                      <a href="singelBannerName">Bright Boho Sunshine</a>
-                    </h4>
-                    <p>By Jonathon Willson</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="wptb-item--inner">
-                <div className="wptb-item--image">
-                  <Image
-                    src="/assets/img/projects/1/2.jpg"
-                    alt="Banner 2"
-                    width={700}
-                    height={400}
-                    layout="responsive"
-                  />
-                </div>
-                <div className="wptb-item--holder">
-                  <div className="wptb-item--meta">
-                    <h4>
-                      <a href="singelBannerName">
-                        California Fall Collection 2023
+
+        <div className="effect-gradient has-radius">
+          <div className="row">
+            {feEvents.map((feEvent) => (
+              <div className="col-md-4 pt-3">
+                <div className="grid-item" key={feEvent.id}>
+                  <div className="wptb-item--inner">
+                    <div className="wptb-item--image">
+                      <Image
+                        src={`/documents/${feEvent.img}`}
+                        alt={feEvent.title}
+                        width={200}
+                        height={50}
+                      />
+                      <a
+                        className="wptb-item--link"
+                        href="project-details.html"
+                      >
+                        <i className="bi bi-chevron-right"></i>
                       </a>
-                    </h4>
-                    <p>By Jonathon Willson</p>
+                    </div>
+
+                    <div className="wptb-item--holder">
+                      <div className="wptb-item--meta">
+                        <h4>
+                          <a href="project-details.html">{feEvent.title}</a>
+                        </h4>
+                        <p>{feEvent.title}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="grid-item">
-              <div className="wptb-item--inner">
-                <div className="wptb-item--image">
-                  <Image
-                    src="/assets/img/projects/1/3.jpg"
-                    alt="Banner 3"
-                    width={700}
-                    height={400}
-                    layout="responsive"
-                  />
-                </div>
-                <div className="wptb-item--holder">
-                  <div className="wptb-item--meta">
-                    <h4>
-                      <a href="singelBannerName">Brown girl next door</a>
-                    </h4>
-                    <p>By Jonathon Willson</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="wptb-item--inner">
-                <div className="wptb-item--image">
-                  <Image
-                    src="/assets/img/projects/1/4.jpg"
-                    alt="Banner 4"
-                    width={700}
-                    height={400}
-                    layout="responsive"
-                  />
-                </div>
-                <div className="wptb-item--holder">
-                  <div className="wptb-item--meta">
-                    <h4>
-                      <a href="singelBannerName">Fashion next stage</a>
-                    </h4>
-                    <p>By Jonathon Willson</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="wptb-item--inner">
-                <div className="wptb-item--image">
-                  <Image
-                    src="/assets/img/projects/1/5.jpg"
-                    alt="Banner 5"
-                    width={700}
-                    height={400}
-                    layout="responsive"
-                  />
-                </div>
-                <div className="wptb-item--holder">
-                  <div className="wptb-item--meta">
-                    <h4>
-                      <a href="singelBannerName">Jenifer in green</a>
-                    </h4>
-                    <p>By Jonathon Willson</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="wptb-item--inner">
-                <div className="wptb-item--image">
-                  <Image
-                    src="/assets/img/projects/1/6.jpg"
-                    alt="Banner 6"
-                    width={700}
-                    height={400}
-                    layout="responsive"
-                  />
-                </div>
-                <div className="wptb-item--holder">
-                  <div className="wptb-item--meta">
-                    <h4>
-                      <a href="singelBannerName">Sunflower Boho girl</a>
-                    </h4>
-                    <p>By Jonathon Willson</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="wptb-item--inner">
-                <div className="wptb-item--image">
-                  <Image
-                    src="/assets/img/projects/1/7.jpg"
-                    alt="Banner 7"
-                    width={700}
-                    height={400}
-                    layout="responsive"
-                  />
-                </div>
-                <div className="wptb-item--holder">
-                  <div className="wptb-item--meta">
-                    <h4>
-                      <a href="singelBannerName">Iceland girl</a>
-                    </h4>
-                    <p>By Jonathon Willson</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="wptb-item--inner">
-                <div className="wptb-item--image">
-                  <Image
-                    src="/assets/img/projects/1/8.jpg"
-                    alt="Banner 8"
-                    width={700}
-                    height={400}
-                    layout="responsive"
-                  />
-                </div>
-                <div className="wptb-item--holder">
-                  <div className="wptb-item--meta">
-                    <h4>
-                      <a href="singelBannerName">Summer sadness</a>
-                    </h4>
-                    <p>By Jonathon Willson</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="wptb-item--inner">
-                <div className="wptb-item--image">
-                  <Image
-                    src="/assets/img/projects/1/9.jpg"
-                    alt="Banner 9"
-                    width={700}
-                    height={400}
-                    layout="responsive"
-                  />
-                </div>
-                <div className="wptb-item--holder">
-                  <div className="wptb-item--meta">
-                    <h4>
-                      <a href="singelBannerName">Festive mode one</a>
-                    </h4>
-                    <p>By Jonathon Willson</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="grid-item">
-              <div className="wptb-item--inner">
-                <div className="wptb-item--image">
-                  <Image
-                    src="/assets/img/projects/1/10.jpg"
-                    alt="Banner 10"
-                    width={700}
-                    height={400}
-                    layout="responsive"
-                  />
-                </div>
-                <div className="wptb-item--holder">
-                  <div className="wptb-item--meta">
-                    <h4>
-                      <a href="singelBannerName">Bright Boho Sunshine0</a>
-                    </h4>
-                    <p>By Jonathon Willson</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
