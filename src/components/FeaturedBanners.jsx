@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function FeaturedBanners() {
@@ -57,18 +58,15 @@ export default function FeaturedBanners() {
                         width={200}
                         height={50}
                       />
-                      <a
-                        className="wptb-item--link"
-                        href="project-details.html"
-                      >
+                      <Link className="wptb-item--link" href={`/${feEvent.id}`}>
                         <i className="bi bi-chevron-right"></i>
-                      </a>
+                      </Link>
                     </div>
 
                     <div className="wptb-item--holder">
                       <div className="wptb-item--meta">
                         <h4>
-                          <a href="project-details.html">{feEvent.title}</a>
+                          <Link href={`/${feEvent.id}`}>{feEvent.title}</Link>
                         </h4>
                         <p>{feEvent.title}</p>
                       </div>

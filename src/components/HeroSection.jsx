@@ -18,7 +18,6 @@ export default function HeroSection() {
         <div className="wptb-item--inner text-center">
           <h6 className="wptb-item--subtitle">ServicEngine Ltd.</h6>
           <h1 className="wptb-item--title">
-            {" "}
             Create your custom
             <br /> <span>Banner</span> for free
           </h1>
