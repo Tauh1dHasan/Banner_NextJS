@@ -58,7 +58,7 @@ export default function FeaturedBanners() {
                         width={200}
                         height={50}
                       />
-                      <Link className="wptb-item--link" href={`/${feEvent.id}`}>
+                      <Link className="wptb-item--link" href={`/event/${feEvent.id}`}>
                         <i className="bi bi-chevron-right"></i>
                       </Link>
                     </div>
@@ -66,7 +66,7 @@ export default function FeaturedBanners() {
                     <div className="wptb-item--holder">
                       <div className="wptb-item--meta">
                         <h4>
-                          <Link href={`/${feEvent.id}`}>{feEvent.title}</Link>
+                          <Link href={`/event/${feEvent.id}`}>{feEvent.title}</Link>
                         </h4>
                         <p>{feEvent.title}</p>
                       </div>
