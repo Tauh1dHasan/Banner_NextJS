@@ -1,12 +1,14 @@
 "use client";
 
-import Image from "next/image";
+import NextImage from "next/image";
 import InputSection from "@/components/InputSection";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Page({ params }) {
   const [eventData, setEventData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [customData, setCustomData] = useState(null);
+  const canvasRef = useRef(null);
   const { eventId } = params;
 
   useEffect(() => {
@@ -23,6 +25,48 @@ export default function Page({ params }) {
         });
     }
   }, [eventId]);
+
+  const generateBanner = (data) => {
+    setCustomData(data);
+  };
+
+  useEffect(() => {
+    if (customData && eventData) {
+      const canvas = canvasRef.current;
+      const ctx = canvas.getContext("2d");
+
+      const bannerImage = new window.Image();
+      bannerImage.src = `/documents/${eventData.banners[0].document}`;
+      bannerImage.onload = () => {
+        ctx.drawImage(bannerImage, 0, 0, canvas.width, canvas.height);
+
+        const userImage = new window.Image();
+        userImage.src = customData.photo;
+        userImage.onload = () => {
+          ctx.drawImage(userImage, 50, 50, 100, 100);
+
+          const orgLogo = new window.Image();
+          orgLogo.src = customData.logo;
+          orgLogo.onload = () => {
+            ctx.drawImage(orgLogo, canvas.width - 150, 50, 100, 100);
+            ctx.fillstyle = "white";
+            ctx.font = "30px Arial";
+            ctx.fillText(customData.name, 200, 100);
+            ctx.fillText(customData.designation, 200, 150);
+            ctx.fillText(customData.organization, 200, 200);
+          };
+        };
+      };
+    }
+  }, [customData, eventData]);
+
+  const downloadBanner = () => {
+    const canvas = canvasRef.current;
+    const link = document.createElement("a");
+    link.download = "custom-banner.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  };
 
   if (loading) {
     return <p>Loading...</p>;
@@ -44,11 +88,10 @@ export default function Page({ params }) {
                 <div className="blog-details-inner">
                   <div className="post-content">
                     <div className="row">
-                      {/* Render banners */}
                       {banners.map((banner, index) => (
                         <div className="col-md-6" key={index}>
                           <figure className="mb-4">
-                            <Image
+                            <NextImage
                               src={`/documents/${banner.document}`}
                               alt={banner.title}
                               width={600}
@@ -60,16 +103,16 @@ export default function Page({ params }) {
                     </div>
 
                     <div className="post-header">
-                      {/* Render event title */}
                       <h1 className="post-title">{event.title}</h1>
                     </div>
                     <div className="fulltext">
-                      {/* Render event description */}
-                      {/* render html from database */}
-                      {/* <p
-                        dangerouslySetInnerHTML={{ __html: event.description }}
-                      ></p> */}
                       <p>{event.description}</p>
+                    </div>
+
+                    <div className="row">
+                      <div className="col-lg-12 col-md-12 mb-5 mb-md-0 ps-md-0 ms-3">
+                        <canvas ref={canvasRef} width={1200} height={800} />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -77,7 +120,14 @@ export default function Page({ params }) {
             </div>
           </div>
         </section>
-        <InputSection />
+
+        <InputSection onGenerateBanner={generateBanner} />
+
+        <div className="text-center mt-4">
+          <button className="btn btn-primary" onClick={downloadBanner}>
+            Download Banner
+          </button>
+        </div>
       </main>
     </>
   );
